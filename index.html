@@ -5,31 +5,58 @@
 <title>LUPX - Assetto Corsa</title>
 <style>
 body{margin:0;font-family:Arial;background:#0f0f14;color:white}
-#sidebar{position:fixed;top:0;left:0;width:60px;height:100%;background:#1a1a24;transition:.3s;padding-top:60px}
+a{text-decoration:none;color:white}
+
+/* Sidebar */
+#sidebar{
+  position:fixed;left:0;top:0;width:60px;height:100%;
+  background:#1a1a24;transition:.3s;padding-top:60px;
+}
 #sidebar:hover{width:200px}
-#sidebar button{background:none;border:none;color:white;padding:15px;text-align:left;width:100%;cursor:pointer}
-#sidebar button span{opacity:0;transition:.3s}
-#sidebar:hover span{opacity:1}
+#sidebar button{
+  width:100%;background:none;border:none;color:white;
+  padding:15px;text-align:left;cursor:pointer;font-size:15px;
+}
 #sidebar button:hover{background:#ff3c3c}
+#sidebar span{opacity:0;margin-left:10px}
+#sidebar:hover span{opacity:1}
+
+/* Main */
 #main{margin-left:60px;padding:20px;transition:.3s}
 #sidebar:hover~#main{margin-left:200px}
-.hero{height:350px;background:#222;display:flex;flex-direction:column;justify-content:end;padding:20px}
+
+/* Sections */
 .section{display:none}
 .section.active{display:block}
-.card{background:#1c1c28;padding:20px;border-radius:15px;margin:15px 0}
-.car-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.card{
+  background:#1c1c28;padding:20px;border-radius:15px;
+  margin-bottom:20px;box-shadow:0 5px 15px #000;
+}
+
+/* Cars */
+.car-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:15px;
+}
 .car img{width:100%;border-radius:10px}
 .car p{text-align:center;color:#ff3c3c;font-weight:bold}
-a{text-decoration:none;color:white}
+
+/* Buttons réseaux */
+.buttons a{
+  display:inline-block;margin:5px;padding:10px 15px;
+  border-radius:5px;font-weight:bold
+}
+.tiktok{background:#00f2ea;color:black}
+.instagram{background:#e1306c}
+.youtube{background:#ff0000}
 </style>
 </head>
-
 <body>
 
 <!-- Sidebar -->
 <div id="sidebar">
   <button onclick="showSection('home')">🏠 <span>Accueil</span></button>
   <button onclick="showSection('voitures')">🚗 <span>Voitures</span></button>
+  <button onclick="showSection('ppfilter')">🎨 <span>PPFilter</span></button>
   <button onclick="showSection('configs')">💻 <span>Configs</span></button>
   <button onclick="showSection('reseaux')">🌐 <span>Réseaux</span></button>
 </div>
@@ -39,9 +66,9 @@ a{text-decoration:none;color:white}
 
 <!-- Accueil -->
 <div id="home" class="section active">
-  <div class="hero">
+  <div class="card">
     <h1>LUPX - Assetto Corsa</h1>
-    <p>Team Lupx, Pixi et Lucifer – passionnés de voitures et d’Assetto Corsa.</p>
+    <p>Bienvenue sur le site LUPX. Découvre nos voitures, nos configs et nos projets Assetto Corsa.</p>
   </div>
 </div>
 
@@ -51,49 +78,75 @@ a{text-decoration:none;color:white}
     <h2>Nos Voitures</h2>
     <div class="car-grid">
 
-      <a href="voiture1.html" class="car">
-        <img src="voiture1.jpg">
-        <p>BMW M4</p>
+      <a href="bmw_m2_competition.html" class="car">
+        <img src="bmw m2 competition.jpg">
+        <p>BMW M2 Competition</p>
       </a>
 
-      <a href="voiture2.html" class="car">
-        <img src="voiture2.jpg">
-        <p>Audi RS3</p>
+      <a href="bmw_m2_cs.html" class="car">
+        <img src="bmw m2 cs.jpg">
+        <p>BMW M2 CS</p>
       </a>
 
-      <a href="voiture3.html" class="car">
-        <img src="voiture3.jpg">
-        <p>Mercedes AMG</p>
+      <a href="bmw_m3_competition.html" class="car">
+        <img src="bmw m3 competition.jpg">
+        <p>BMW M3 Competition</p>
+      </a>
+
+      <a href="bmw_m3_e92.html" class="car">
+        <img src="bmw m3 e92.jpg">
+        <p>BMW M3 E92</p>
+      </a>
+
+      <a href="bmw_m140i.html" class="car">
+        <img src="bmw m140i.jpg">
+        <p>BMW M140i</p>
       </a>
 
     </div>
   </div>
 </div>
 
+<!-- PPFilter -->
+<div id="ppfilter" class="section">
+  <div class="card">
+    <h2>PPFilter</h2>
+    <p>Ici tu pourras partager tes filtres graphiques Assetto Corsa.</p>
+  </div>
+</div>
+
 <!-- Configs -->
 <div id="configs" class="section">
   <div class="card">
-    <h2>Config de Lucifer</h2>
-    <p>
-    OS : Windows 11 Pro<br>
-    Carte Graphique : RTX 3060<br>
-    Processeur : Intel i9-11900KF 3.50GHz<br>
-    Stockage : SSD 1To + HDD 5To + SSD 2To Lexar 710<br>
-    RAM : Corsair 32GB<br>
-    Carte mère : MSI MPG Z490<br>
-    Refroidissement : Cooler Master<br>
-    Alimentation : MAG A850BM 80+ Gold
-    </p>
-  </div>
+    <h2>Configs PC</h2>
 
-  <div class="card">
-    <h2>Config de Pixi</h2>
-    <p>
-    OS : Windows 11 Pro<br>
-    Carte Graphique : RTX 4060<br>
-    Processeur : Ryzen 5 5600 – 3.50GHz<br>
-    Stockage : SSD 1To
-    </p>
+    <button onclick="showConfig('lucifer')">Config Lucifer</button>
+    <button onclick="showConfig('pixi')">Config Pixi</button>
+
+    <div id="lucifer" class="pc" style="display:none;">
+      <h3>Lucifer</h3>
+      <p>
+        OS : Windows 11 Pro<br>
+        GPU : RTX 3060<br>
+        CPU : i9‑11900KF 3.50GHz<br>
+        Stockage : SSD 1To + HDD 5To + SSD 2To Lexar 710<br>
+        RAM : Corsair 32GB<br>
+        Carte mère : MSI MPG Z490<br>
+        Refroidissement : Cooler Master<br>
+        Alim : MAG A850BM 80+ Gold
+      </p>
+    </div>
+
+    <div id="pixi" class="pc" style="display:none;">
+      <h3>Pixi</h3>
+      <p>
+        OS : Windows 11 Pro<br>
+        GPU : RTX 4060<br>
+        CPU : Ryzen 5‑5600 3.50GHz<br>
+        Stockage : SSD 1To
+      </p>
+    </div>
+
   </div>
 </div>
 
@@ -101,7 +154,12 @@ a{text-decoration:none;color:white}
 <div id="reseaux" class="section">
   <div class="card">
     <h2>Réseaux</h2>
-    <p>Ajoute ici tes liens TikTok, Insta, YouTube, Discord…</p>
+    <div class="buttons">
+      <a href="https://www.youtube.com/@ifr_5057" target="_blank" class="youtube">YouTube</a>
+      <a href="https://www.tiktok.com/@luciferoff34" target="_blank" class="tiktok">TikTok Lucifer</a>
+      <a href="https://www.instagram.com/lucifer_off34?igsh=a3p3ZGRjejRmeWtk&utm_source=qr" target="_blank" class="instagram">Instagram Lucifer</a>
+      <a href="https://www.tiktok.com/@pix.exeee" target="_blank" class="tiktok">TikTok Pixi</a>
+    </div>
   </div>
 </div>
 
@@ -111,6 +169,10 @@ a{text-decoration:none;color:white}
 function showSection(id){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+}
+function showConfig(id){
+  document.querySelectorAll('.pc').forEach(p=>p.style.display="none");
+  document.getElementById(id).style.display="block";
 }
 </script>
 
