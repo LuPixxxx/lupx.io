@@ -11,6 +11,11 @@
     color: white;
   }
 
+  a {
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
   /* --- Sidebar --- */
   #sidebar {
     position: fixed;
@@ -106,7 +111,63 @@
     border-radius: 15px;
     margin-bottom: 20px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
   }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  }
+
+  .card h2, .card h3 {
+    margin-top: 0;
+    color: #ff3c3c;
+  }
+
+  /* --- Boutons --- */
+  .buttons a, .buttons button {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .discord { background: #7289da; }
+  .tiktok { background: #00f2ea; color: black; }
+  .instagram { background: #E1306C; }
+  .youtube { background: #ff0000; }
+  .patreon { background: #f96854; }
+
+  .buttons a:hover, .buttons button:hover {
+    opacity: 0.8;
+  }
+
+  /* --- Voitures Grid --- */
+  .car-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+  }
+
+  .car img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .car p {
+    text-align: center;
+    margin-top: 5px;
+    font-weight: bold;
+    color: #ff3c3c;
+  }
+
 </style>
 </head>
 <body>
@@ -131,6 +192,8 @@
   </div>
 
   <!-- Sections dynamiques -->
+
+  <!-- Config PC Lupix -->
   <div id="configLupx" class="section">
     <div class="card">
       <h2>Config PC Lupix</h2>
@@ -138,6 +201,7 @@
     </div>
   </div>
 
+  <!-- Photo -->
   <div id="photo" class="section">
     <div class="card">
       <h2>Photo</h2>
@@ -145,17 +209,32 @@
     </div>
   </div>
 
+  <!-- Voitures -->
   <div id="voitures" class="section">
     <div class="card">
-      <h2>Voitures</h2>
-      <ul>
-        <li>Ferrari F8</li>
-        <li>Lamborghini Huracan</li>
-        <li>Porsche 911 GT3</li>
-      </ul>
+      <h2>Nos Voitures</h2>
+      <div class="car-grid">
+        <!-- Ligne 1 -->
+        <div class="car"><img src="voiture1.jpg" alt="Ferrari F8"><p>Ferrari F8</p></div>
+        <div class="car"><img src="voiture2.jpg" alt="Lamborghini Huracan"><p>Lamborghini Huracan</p></div>
+        <div class="car"><img src="voiture3.jpg" alt="Porsche 911 GT3"><p>Porsche 911 GT3</p></div>
+        <!-- Ligne 2 -->
+        <div class="car"><img src="voiture4.jpg" alt="McLaren 720S"><p>McLaren 720S</p></div>
+        <div class="car"><img src="voiture5.jpg" alt="Audi R8"><p>Audi R8</p></div>
+        <div class="car"><img src="voiture6.jpg" alt="BMW M4"><p>BMW M4</p></div>
+        <!-- Ligne 3 -->
+        <div class="car"><img src="voiture7.jpg" alt="Mercedes AMG GT"><p>Mercedes AMG GT</p></div>
+        <div class="car"><img src="voiture8.jpg" alt="Nissan GT-R"><p>Nissan GT-R</p></div>
+        <div class="car"><img src="voiture9.jpg" alt="Chevrolet Corvette"><p>Chevrolet Corvette</p></div>
+        <!-- Ligne 4 -->
+        <div class="car"><img src="voiture10.jpg" alt="Toyota Supra"><p>Toyota Supra</p></div>
+        <div class="car"><img src="voiture11.jpg" alt="Ford Mustang"><p>Ford Mustang</p></div>
+        <div class="car"><img src="voiture12.jpg" alt="Pagani Huayra"><p>Pagani Huayra</p></div>
+      </div>
     </div>
   </div>
 
+  <!-- PPFilter -->
   <div id="ppfilter" class="section">
     <div class="card">
       <h2>PPFilter</h2>
@@ -163,34 +242,65 @@
     </div>
   </div>
 
+  <!-- Ma config PC -->
   <div id="maConfig" class="section">
     <div class="card">
       <h2>Ma config PC</h2>
-      <p>Processeur: AMD Ryzen 7 5800X<br>RAM: 16GB DDR4<br>Carte Graphique: RTX 3070<br>SSD: 512GB NVMe</p>
+      <p>Clique sur le bouton pour afficher ta config :</p>
+      <button id="showConfigBtn" style="padding:10px 15px; border:none; border-radius:5px; background:#ff3c3c; color:white; cursor:pointer;">
+        Voir ma config
+      </button>
+      <div id="configDisplay" style="margin-top:20px; background:#111; padding:15px; border-radius:10px; display:none;">
+        <!-- La config va apparaître ici -->
+        <h3>Ma Configuration</h3>
+        <p>Processeur: Intel i9-11900K<br>
+           RAM: 32GB DDR4<br>
+           Carte Graphique: RTX 3080<br>
+           SSD: 1TB NVMe<br>
+           Carte mère: ASUS ROG STRIX Z590-E<br>
+           Alimentation: 750W</p>
+      </div>
     </div>
   </div>
 
+  <!-- Réseaux -->
   <div id="reseaux" class="section">
     <div class="card">
       <h2>Réseaux</h2>
-      <p>Discord | TikTok | YouTube | Patreon</p>
+      <div class="buttons">
+        <a href="https://www.tiktok.com/@pix.exeee" target="_blank" class="tiktok">Pixi - TikTok</a>
+        <a href="https://www.tiktok.com/@luciferoff34" target="_blank" class="tiktok">Lucifer - TikTok</a>
+        <a href="https://www.instagram.com/lucifer_off34?igsh=a3p3ZGRjejRmeWtk&utm_source=qr" target="_blank" class="instagram">Lucifer - Instagram</a>
+        <a href="https://www.youtube.com/@ifr_5057" target="_blank" class="youtube">YouTube</a>
+      </div>
     </div>
   </div>
 
+  <!-- Support -->
   <div id="support" class="section">
     <div class="card">
       <h2>Support</h2>
       <p>Pour toute question, passe par notre Discord.</p>
     </div>
   </div>
+
 </div>
 
 <script>
+  // Sidebar sections
   function showSection(id) {
     const sections = document.querySelectorAll('.section');
     sections.forEach(sec => sec.classList.remove('active'));
     document.getElementById(id).classList.add('active');
   }
+
+  // Ma config PC
+  const btn = document.getElementById('showConfigBtn');
+  const config = document.getElementById('configDisplay');
+  btn.addEventListener('click', () => {
+    config.style.display = 'block';
+    btn.style.display = 'none';
+  });
 </script>
 
 </body>
