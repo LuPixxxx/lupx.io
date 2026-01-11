@@ -1,160 +1,197 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>LUPX - Assetto Corsa</title>
-  <style>
-    /* --- Global --- */
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f0f14;
-      color: white;
-    }
+<meta charset="UTF-8">
+<title>LUPX - Assetto Corsa</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f0f14;
+    color: white;
+  }
 
-    a {
-      text-decoration: none;
-      transition: 0.3s;
-    }
+  /* --- Sidebar --- */
+  #sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 100%;
+    background: #1a1a24;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+  }
 
-    /* --- Header --- */
-    header {
-      background: #1a1a24;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    }
+  #sidebar:hover {
+    width: 200px;
+  }
 
-    header h1 {
-      margin: 0;
-    }
+  #sidebar button {
+    background: none;
+    border: none;
+    color: white;
+    padding: 15px 10px;
+    text-align: left;
+    font-size: 16px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: 0.3s;
+  }
 
-    header p {
-      margin: 5px 0 15px 0;
-      color: #aaa;
-    }
+  #sidebar button:hover {
+    background: #ff3c3c;
+  }
 
-    header nav a {
-      margin: 0 10px;
-      color: #ff3c3c;
-      font-weight: bold;
-      padding: 8px 15px;
-      border-radius: 5px;
-    }
+  #sidebar button span {
+    opacity: 0;
+    margin-left: 10px;
+    transition: opacity 0.3s;
+  }
 
-    header nav a:hover {
-      background: #ff3c3c;
-      color: white;
-    }
+  #sidebar:hover button span {
+    opacity: 1;
+  }
 
-    /* --- Section --- */
-    section {
-      padding: 30px 20px;
-      max-width: 1000px;
-      margin: auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
+  /* --- Main content --- */
+  #main {
+    margin-left: 60px;
+    transition: margin-left 0.3s;
+    padding: 20px;
+  }
 
-    /* --- Cartes --- */
-    .card {
-      background: #1c1c28;
-      padding: 20px;
-      border-radius: 15px;
-      width: 300px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+  #sidebar:hover ~ #main {
+    margin-left: 200px;
+  }
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-    }
+  /* --- Hero section --- */
+  .hero {
+    background: url('hero-image.jpg') no-repeat center center/cover;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: white;
+    padding: 20px;
+    text-shadow: 1px 1px 5px black;
+  }
 
-    .card h2, .card h3 {
-      margin-top: 0;
-      color: #ff3c3c;
-    }
+  .hero h1 {
+    margin: 0;
+    font-size: 40px;
+  }
 
-    .card ul {
-      padding-left: 20px;
-    }
+  .hero p {
+    font-size: 18px;
+    max-width: 600px;
+  }
 
-    /* --- Boutons --- */
-    .buttons a {
-      display: inline-block;
-      margin: 5px;
-      padding: 10px 15px;
-      border-radius: 5px;
-      font-weight: bold;
-      color: white;
-    }
+  /* --- Sections --- */
+  .section {
+    display: none;
+    margin-top: 20px;
+  }
 
-    .discord { background: #7289da; }
-    .tiktok { background: #00f2ea; color: black; }
-    .youtube { background: #ff0000; }
-    .patreon { background: #f96854; }
+  .section.active {
+    display: block;
+  }
 
-    .buttons a:hover {
-      opacity: 0.8;
-    }
-
-    /* --- Images --- */
-    .card img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-  </style>
+  .card {
+    background: #1c1c28;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+</style>
 </head>
 <body>
 
-<header>
-  <h1>LUPX - Assetto Corsa</h1>
-  <p>Serveurs : Autoroute & Drift</p>
-  <nav>
-    <a href="index.html">Accueil</a>
-    <a href="voitures.html">Voitures</a>
-    <a href="config.html">Config PC</a>
-    <a href="presentation.html">Présentation</a>
-  </nav>
-</header>
+<!-- Sidebar -->
+<div id="sidebar">
+  <button onclick="showSection('configLupx')">🖥️ <span>Config PC Lupix</span></button>
+  <button onclick="showSection('photo')">📸 <span>Photo</span></button>
+  <button onclick="showSection('voitures')">🚗 <span>Voitures</span></button>
+  <button onclick="showSection('ppfilter')">🎨 <span>PPFilter</span></button>
+  <button onclick="showSection('maConfig')">💻 <span>Ma config PC</span></button>
+  <button onclick="showSection('reseaux')">🌐 <span>Réseaux</span></button>
+  <button onclick="showSection('support')">🛠️ <span>Support</span></button>
+</div>
 
-<section>
-  <!-- Carte Équipe -->
-  <div class="card">
-    <h2>Équipe</h2>
-    <p>Lupx • Pixi • Lucifer</p>
+<!-- Main content -->
+<div id="main">
+  <!-- Hero section -->
+  <div class="hero">
+    <h1>LUPX - Assetto Corsa</h1>
+    <p>Bienvenue sur notre site. Nous sommes Lupx, Pixi et Lucifer, passionnés d’Assetto Corsa. Découvrez nos configs, nos voitures et suivez-nous sur nos réseaux !</p>
   </div>
 
-  <!-- Carte Serveurs -->
-  <div class="card">
-    <h2>Serveurs Assetto Corsa</h2>
-    <ul>
-      <li>Autoroute</li>
-      <li>Drift</li>
-    </ul>
-  </div>
-
-  <!-- Carte Réseaux -->
-  <div class="card">
-    <h2>Réseaux</h2>
-    <div class="buttons">
-      <a href="https://discord.gg/..." class="discord">Discord</a>
-      <a href="https://www.tiktok.com/..." class="tiktok">TikTok</a>
-      <a href="https://www.youtube.com/..." class="youtube">YouTube</a>
-      <a href="https://www.patreon.com/..." class="patreon">Patreon</a>
+  <!-- Sections dynamiques -->
+  <div id="configLupx" class="section">
+    <div class="card">
+      <h2>Config PC Lupix</h2>
+      <p>Processeur: Intel i9-11900K<br>RAM: 32GB DDR4<br>Carte Graphique: RTX 3080<br>SSD: 1TB NVMe</p>
     </div>
   </div>
 
-  <!-- Carte Support -->
-  <div class="card">
-    <h2>Support</h2>
-    <p>Pour le support, passe par notre Discord.</p>
+  <div id="photo" class="section">
+    <div class="card">
+      <h2>Photo</h2>
+      <img src="photo.jpg" alt="Photo de l'équipe" style="width:100%; border-radius:10px;">
+    </div>
   </div>
-</section>
+
+  <div id="voitures" class="section">
+    <div class="card">
+      <h2>Voitures</h2>
+      <ul>
+        <li>Ferrari F8</li>
+        <li>Lamborghini Huracan</li>
+        <li>Porsche 911 GT3</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="ppfilter" class="section">
+    <div class="card">
+      <h2>PPFilter</h2>
+      <p>Section pour partager nos filtres et réglages graphiques.</p>
+    </div>
+  </div>
+
+  <div id="maConfig" class="section">
+    <div class="card">
+      <h2>Ma config PC</h2>
+      <p>Processeur: AMD Ryzen 7 5800X<br>RAM: 16GB DDR4<br>Carte Graphique: RTX 3070<br>SSD: 512GB NVMe</p>
+    </div>
+  </div>
+
+  <div id="reseaux" class="section">
+    <div class="card">
+      <h2>Réseaux</h2>
+      <p>Discord | TikTok | YouTube | Patreon</p>
+    </div>
+  </div>
+
+  <div id="support" class="section">
+    <div class="card">
+      <h2>Support</h2>
+      <p>Pour toute question, passe par notre Discord.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showSection(id) {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+</script>
 
 </body>
 </html>
