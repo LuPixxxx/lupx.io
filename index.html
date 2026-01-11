@@ -4,303 +4,114 @@
 <meta charset="UTF-8">
 <title>LUPX - Assetto Corsa</title>
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0f0f14;
-    color: white;
-  }
-
-  a {
-    text-decoration: none;
-    transition: 0.3s;
-  }
-
-  /* --- Sidebar --- */
-  #sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 60px;
-    height: 100%;
-    background: #1a1a24;
-    overflow-x: hidden;
-    transition: 0.3s;
-    padding-top: 60px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  #sidebar:hover {
-    width: 200px;
-  }
-
-  #sidebar button {
-    background: none;
-    border: none;
-    color: white;
-    padding: 15px 10px;
-    text-align: left;
-    font-size: 16px;
-    cursor: pointer;
-    white-space: nowrap;
-    overflow: hidden;
-    transition: 0.3s;
-  }
-
-  #sidebar button:hover {
-    background: #ff3c3c;
-  }
-
-  #sidebar button span {
-    opacity: 0;
-    margin-left: 10px;
-    transition: opacity 0.3s;
-  }
-
-  #sidebar:hover button span {
-    opacity: 1;
-  }
-
-  /* --- Main content --- */
-  #main {
-    margin-left: 60px;
-    transition: margin-left 0.3s;
-    padding: 20px;
-  }
-
-  #sidebar:hover ~ #main {
-    margin-left: 200px;
-  }
-
-  /* --- Hero section --- */
-  .hero {
-    background: url('hero-image.jpg') no-repeat center center/cover;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    color: white;
-    padding: 20px;
-    text-shadow: 1px 1px 5px black;
-  }
-
-  .hero h1 {
-    margin: 0;
-    font-size: 40px;
-  }
-
-  .hero p {
-    font-size: 18px;
-    max-width: 600px;
-  }
-
-  /* --- Sections --- */
-  .section {
-    display: none;
-    margin-top: 20px;
-  }
-
-  .section.active {
-    display: block;
-  }
-
-  .card {
-    background: #1c1c28;
-    padding: 20px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-  }
-
-  .card h2, .card h3 {
-    margin-top: 0;
-    color: #ff3c3c;
-  }
-
-  /* --- Boutons --- */
-  .buttons a, .buttons button {
-    display: inline-block;
-    margin: 5px;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-  }
-
-  .discord { background: #7289da; }
-  .tiktok { background: #00f2ea; color: black; }
-  .instagram { background: #E1306C; }
-  .youtube { background: #ff0000; }
-  .patreon { background: #f96854; }
-
-  .buttons a:hover, .buttons button:hover {
-    opacity: 0.8;
-  }
-
-  /* --- Voitures Grid --- */
-  .car-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-top: 15px;
-  }
-
-  .car img {
-    width: 100%;
-    border-radius: 10px;
-    object-fit: cover;
-  }
-
-  .car p {
-    text-align: center;
-    margin-top: 5px;
-    font-weight: bold;
-    color: #ff3c3c;
-  }
-
+body{margin:0;font-family:Arial;background:#0f0f14;color:white}
+#sidebar{position:fixed;top:0;left:0;width:60px;height:100%;background:#1a1a24;transition:.3s;padding-top:60px}
+#sidebar:hover{width:200px}
+#sidebar button{background:none;border:none;color:white;padding:15px;text-align:left;width:100%;cursor:pointer}
+#sidebar button span{opacity:0;transition:.3s}
+#sidebar:hover span{opacity:1}
+#sidebar button:hover{background:#ff3c3c}
+#main{margin-left:60px;padding:20px;transition:.3s}
+#sidebar:hover~#main{margin-left:200px}
+.hero{height:350px;background:#222;display:flex;flex-direction:column;justify-content:end;padding:20px}
+.section{display:none}
+.section.active{display:block}
+.card{background:#1c1c28;padding:20px;border-radius:15px;margin:15px 0}
+.car-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.car img{width:100%;border-radius:10px}
+.car p{text-align:center;color:#ff3c3c;font-weight:bold}
+a{text-decoration:none;color:white}
 </style>
 </head>
+
 <body>
 
 <!-- Sidebar -->
 <div id="sidebar">
-  <button onclick="showSection('configLupx')">🖥️ <span>Config PC Lupix</span></button>
-  <button onclick="showSection('photo')">📸 <span>Photo</span></button>
+  <button onclick="showSection('home')">🏠 <span>Accueil</span></button>
   <button onclick="showSection('voitures')">🚗 <span>Voitures</span></button>
-  <button onclick="showSection('ppfilter')">🎨 <span>PPFilter</span></button>
-  <button onclick="showSection('maConfig')">💻 <span>Ma config PC</span></button>
+  <button onclick="showSection('configs')">💻 <span>Configs</span></button>
   <button onclick="showSection('reseaux')">🌐 <span>Réseaux</span></button>
-  <button onclick="showSection('support')">🛠️ <span>Support</span></button>
 </div>
 
-<!-- Main content -->
+<!-- Main -->
 <div id="main">
-  <!-- Hero section -->
+
+<!-- Accueil -->
+<div id="home" class="section active">
   <div class="hero">
     <h1>LUPX - Assetto Corsa</h1>
-    <p>Bienvenue sur notre site. Nous sommes Lupx, Pixi et Lucifer, passionnés d’Assetto Corsa. Découvrez nos configs, nos voitures et suivez-nous sur nos réseaux !</p>
+    <p>Team Lupx, Pixi et Lucifer – passionnés de voitures et d’Assetto Corsa.</p>
   </div>
+</div>
 
-  <!-- Sections dynamiques -->
+<!-- Voitures -->
+<div id="voitures" class="section">
+  <div class="card">
+    <h2>Nos Voitures</h2>
+    <div class="car-grid">
 
-  <!-- Config PC Lupix -->
-  <div id="configLupx" class="section">
-    <div class="card">
-      <h2>Config PC Lupix</h2>
-      <p>Processeur: Intel i9-11900K<br>RAM: 32GB DDR4<br>Carte Graphique: RTX 3080<br>SSD: 1TB NVMe</p>
+      <a href="voiture1.html" class="car">
+        <img src="voiture1.jpg">
+        <p>BMW M4</p>
+      </a>
+
+      <a href="voiture2.html" class="car">
+        <img src="voiture2.jpg">
+        <p>Audi RS3</p>
+      </a>
+
+      <a href="voiture3.html" class="car">
+        <img src="voiture3.jpg">
+        <p>Mercedes AMG</p>
+      </a>
+
     </div>
   </div>
+</div>
 
-  <!-- Photo -->
-  <div id="photo" class="section">
-    <div class="card">
-      <h2>Photo</h2>
-      <img src="photo.jpg" alt="Photo de l'équipe" style="width:100%; border-radius:10px;">
-    </div>
+<!-- Configs -->
+<div id="configs" class="section">
+  <div class="card">
+    <h2>Config de Lucifer</h2>
+    <p>
+    OS : Windows 11 Pro<br>
+    Carte Graphique : RTX 3060<br>
+    Processeur : Intel i9-11900KF 3.50GHz<br>
+    Stockage : SSD 1To + HDD 5To + SSD 2To Lexar 710<br>
+    RAM : Corsair 32GB<br>
+    Carte mère : MSI MPG Z490<br>
+    Refroidissement : Cooler Master<br>
+    Alimentation : MAG A850BM 80+ Gold
+    </p>
   </div>
 
-  <!-- Voitures -->
-  <div id="voitures" class="section">
-    <div class="card">
-      <h2>Nos Voitures</h2>
-      <div class="car-grid">
-        <!-- Ligne 1 -->
-        <div class="car"><img src="voiture1.jpg" alt="Ferrari F8"><p>Ferrari F8</p></div>
-        <div class="car"><img src="voiture2.jpg" alt="Lamborghini Huracan"><p>Lamborghini Huracan</p></div>
-        <div class="car"><img src="voiture3.jpg" alt="Porsche 911 GT3"><p>Porsche 911 GT3</p></div>
-        <!-- Ligne 2 -->
-        <div class="car"><img src="voiture4.jpg" alt="McLaren 720S"><p>McLaren 720S</p></div>
-        <div class="car"><img src="voiture5.jpg" alt="Audi R8"><p>Audi R8</p></div>
-        <div class="car"><img src="voiture6.jpg" alt="BMW M4"><p>BMW M4</p></div>
-        <!-- Ligne 3 -->
-        <div class="car"><img src="voiture7.jpg" alt="Mercedes AMG GT"><p>Mercedes AMG GT</p></div>
-        <div class="car"><img src="voiture8.jpg" alt="Nissan GT-R"><p>Nissan GT-R</p></div>
-        <div class="car"><img src="voiture9.jpg" alt="Chevrolet Corvette"><p>Chevrolet Corvette</p></div>
-        <!-- Ligne 4 -->
-        <div class="car"><img src="voiture10.jpg" alt="Toyota Supra"><p>Toyota Supra</p></div>
-        <div class="car"><img src="voiture11.jpg" alt="Ford Mustang"><p>Ford Mustang</p></div>
-        <div class="car"><img src="voiture12.jpg" alt="Pagani Huayra"><p>Pagani Huayra</p></div>
-      </div>
-    </div>
+  <div class="card">
+    <h2>Config de Pixi</h2>
+    <p>
+    OS : Windows 11 Pro<br>
+    Carte Graphique : RTX 4060<br>
+    Processeur : Ryzen 5 5600 – 3.50GHz<br>
+    Stockage : SSD 1To
+    </p>
   </div>
+</div>
 
-  <!-- PPFilter -->
-  <div id="ppfilter" class="section">
-    <div class="card">
-      <h2>PPFilter</h2>
-      <p>Section pour partager nos filtres et réglages graphiques.</p>
-    </div>
+<!-- Réseaux -->
+<div id="reseaux" class="section">
+  <div class="card">
+    <h2>Réseaux</h2>
+    <p>Ajoute ici tes liens TikTok, Insta, YouTube, Discord…</p>
   </div>
-
-  <!-- Ma config PC -->
-  <div id="maConfig" class="section">
-    <div class="card">
-      <h2>Ma config PC</h2>
-      <p>Clique sur le bouton pour afficher ta config :</p>
-      <button id="showConfigBtn" style="padding:10px 15px; border:none; border-radius:5px; background:#ff3c3c; color:white; cursor:pointer;">
-        Voir ma config
-      </button>
-      <div id="configDisplay" style="margin-top:20px; background:#111; padding:15px; border-radius:10px; display:none;">
-        <!-- La config va apparaître ici -->
-        <h3>Ma Configuration</h3>
-        <p>Processeur: Intel i9-11900K<br>
-           RAM: 32GB DDR4<br>
-           Carte Graphique: RTX 3080<br>
-           SSD: 1TB NVMe<br>
-           Carte mère: ASUS ROG STRIX Z590-E<br>
-           Alimentation: 750W</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Réseaux -->
-  <div id="reseaux" class="section">
-    <div class="card">
-      <h2>Réseaux</h2>
-      <div class="buttons">
-        <a href="https://www.tiktok.com/@pix.exeee" target="_blank" class="tiktok">Pixi - TikTok</a>
-        <a href="https://www.tiktok.com/@luciferoff34" target="_blank" class="tiktok">Lucifer - TikTok</a>
-        <a href="https://www.instagram.com/lucifer_off34?igsh=a3p3ZGRjejRmeWtk&utm_source=qr" target="_blank" class="instagram">Lucifer - Instagram</a>
-        <a href="https://www.youtube.com/@ifr_5057" target="_blank" class="youtube">YouTube</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Support -->
-  <div id="support" class="section">
-    <div class="card">
-      <h2>Support</h2>
-      <p>Pour toute question, passe par notre Discord.</p>
-    </div>
-  </div>
+</div>
 
 </div>
 
 <script>
-  // Sidebar sections
-  function showSection(id) {
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(sec => sec.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-  }
-
-  // Ma config PC
-  const btn = document.getElementById('showConfigBtn');
-  const config = document.getElementById('configDisplay');
-  btn.addEventListener('click', () => {
-    config.style.display = 'block';
-    btn.style.display = 'none';
-  });
+function showSection(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
 </script>
 
 </body>
